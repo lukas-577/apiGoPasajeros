@@ -106,5 +106,5 @@ func main() {
 
 	router.DELETE("pasajeros/:rut", deletePasajero)
 
-	router.Run("localhost:8080")
+	router.Run("0.0.0.0:8080")
 }
