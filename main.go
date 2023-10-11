@@ -1,9 +1,9 @@
 package main
 
 import (
-	"net/http"
-
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
+	"net/http"
 )
 
 type pasajero struct {
@@ -90,6 +90,11 @@ func deletePasajero(c *gin.Context) {
 
 func main() {
 	router := gin.Default()
+
+	// Configurar el middleware CORS
+	config := cors.DefaultConfig()
+	config.AllowOrigins = []string{"http://localhost:5173"}
+	router.Use(cors.New(config))
 
 	router.GET("/", func(c *gin.Context) {
 		c.JSON(200, gin.H{
